@@ -107,6 +107,7 @@ const DepartmentList: React.FC = () => {
               onClick={(e) => {
                 e.stopPropagation();
                 handleSelectDepartment(department);
+                handleToggle(index);
               }}
             />
             <ListItemText primary={department.department} />
