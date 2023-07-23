@@ -126,7 +126,10 @@ const DepartmentList: React.FC = () => {
                     tabIndex={-1}
                     disableRipple
                     color="primary"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleSelectSubDepartment(subDept, department);
+                    }}
                   />
                   <ListItemText primary={subDept} />
                 </ListItem>
