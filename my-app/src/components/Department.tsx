@@ -98,7 +98,7 @@ const DepartmentList: React.FC = () => {
     <List component="nav" style={{ maxWidth: 400, margin: "0 auto" }}>
       {data.map((department, index) => (
         <div key={department.department}>
-          <ListItem button onClick={() => handleToggle(index)}>
+          <ListItem>
             <Checkbox
               checked={selected.includes(department.department)}
               tabIndex={-1}
@@ -107,11 +107,20 @@ const DepartmentList: React.FC = () => {
               onClick={(e) => {
                 e.stopPropagation();
                 handleSelectDepartment(department);
-                handleToggle(index);
               }}
             />
             <ListItemText primary={department.department} />
-            {open.includes(index) ? <ExpandLess /> : <ExpandMore />}
+            {open.includes(index) ? (
+              <ExpandLess
+                onClick={() => handleToggle(index)}
+                style={{ cursor: "pointer" }}
+              />
+            ) : (
+              <ExpandMore
+                onClick={() => handleToggle(index)}
+                style={{ cursor: "pointer" }}
+              />
+            )}
           </ListItem>
           <Collapse in={open.includes(index)} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
